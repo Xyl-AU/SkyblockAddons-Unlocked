@@ -677,37 +677,6 @@ public class ConfigValues {
      * @return {@code true} if the feature should be disabled, {@code false} otherwise
      */
     public boolean isRemoteDisabled(Feature feature) {
-        if (feature == null) return false;
-
-        HashMap<String, List<Integer>> disabledFeatures = main.getOnlineData().getDisabledFeatures();
-
-        if (disabledFeatures.containsKey("all")) {
-            if (disabledFeatures.get("all") != null) {
-                if (disabledFeatures.get("all").contains(feature.getId())) {
-                    return true;
-                }
-            } else {
-                logger.error("\"all\" key in disabled features map has value of null. Please fix online data.");
-            }
-        }
-
-        /*
-        Check for disabled features for this mod version. Pre-release versions will follow the disabled features
-        list for their release version. For example, the version {@code 1.6.0-beta.10} will adhere to the list
-        for version {@code 1.6.0}
-         */
-        String version = SkyblockAddons.VERSION;
-        if (version.contains("-")) {
-            version = version.split("-")[0];
-        }
-        if (disabledFeatures.containsKey(version)) {
-            if (disabledFeatures.get(version) != null) {
-                return disabledFeatures.get(version).contains(feature.getId());
-            } else {
-                logger.error("\"" + version + "\" key in disabled features map has value of null. Please fix online data.");
-            }
-        }
-
         return false;
     }
 

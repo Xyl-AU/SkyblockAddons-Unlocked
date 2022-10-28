@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Crafting patterns enum, constants and utility methods
+ * {@link Feature#CRAFTING_PATTERNS Crafting patterns} enum, constants and utility methods
  *
  * @author DidiSkywalker
  */
